@@ -1,0 +1,19 @@
+name: Detect published release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  detect:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v4
+      - name: Always fail
+        run: exit 1
+        id: bad
+        continue-on-error: true
+      - name: Report success
+        run: echo "OK"
+        if: job.steps.bad.status == failure()

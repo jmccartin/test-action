@@ -1,0 +1,59 @@
+name: Build tag publish
+
+on:
+  push:
+    branches:
+      - "not-main"
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Log in to registry ${{ env.REGISTRY }}
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set version
+        run: |
+          export VERSION_TAG="0.0.0"
+
+          echo "Using version tag ${VERSION_TAG}"
+          echo "VERSION_TAG=${VERSION_TAG}" >> $GITHUB_ENV
+
+#          git config --global user.name "$(git log -n 1 --pretty=format:%an)"
+#          git config --global user.email "$(git log -n 1 --pretty=format:%ae)"
+#          git fetch -f --all --tags
+
+#          git tag $VERSION_TAG
+#          git push --tags
+
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/${{ github.repository }}
+
+      - name: Show meta tags
+        run: echo Meta tag ${{ steps.meta.outputs.tags }}
+
+      - name: Build and push Docker images
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: ${{ env.REGISTRY }}/${{ github.repository }}:${{ env.VERSION_TAG }}
+          labels: ${{ steps.meta.outputs.labels }}
