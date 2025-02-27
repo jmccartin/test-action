@@ -1,0 +1,18 @@
+name: Cleanup branch
+
+on: delete
+
+defaults:
+  run:
+    shell: bash
+
+run-name: ${{ github.workflow }} - ${{ github.event.ref }}
+
+jobs:
+  cleanup:
+    name: Cleanup branch
+    runs-on: ubuntu-latest
+    if: github.event.ref_type == 'branch'
+    steps:
+      - name: Report success
+        run: echo "OK"
