@@ -1,4 +1,6 @@
 title: Test Action
 logo: https://github.githubassets.com/assets/GitHub-Logo-ee398b662d42.png
 description: Documentation for Test Action
-theme: jekyll-theme-minimal
+plugins:
+  - jekyll-remote-theme
+remote_theme: just-the-docs/just-the-docs
