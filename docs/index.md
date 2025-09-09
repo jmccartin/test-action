@@ -1,7 +1,21 @@
+---
+title: Home
+layout: home
+nav_order: 1
+description: "This is a home page for the Test Action documentation"
+permalink: /
+---
+
 # Test Action Documentation
 
 This is some example documentation for test-action.
 
-## Table of Contents
+[View source on GitHub][https://github.com/jmccartin/test-action]{: .btn .fs-5 .mb-4 .mb-md-0 }
 
-- [API](api.md)
+---
+
+{: .warning }
+> This page is just for prototyping with GitHub pages and displaying documentation.
+
+{: .note }
+This is a notification about something.
