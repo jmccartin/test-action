@@ -10,12 +10,10 @@ permalink: /
 
 This is some example documentation for test-action.
 
-[View source on GitHub][https://github.com/jmccartin/test-action]{: .btn .fs-5 .mb-4 .mb-md-0 }
-
 ---
 
 {: .warning }
 > This page is just for prototyping with GitHub pages and displaying documentation.
 
 {: .note }
-This is a notification about something.
+> This is a notification about something.

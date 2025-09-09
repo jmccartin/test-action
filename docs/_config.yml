@@ -4,3 +4,29 @@ description: Documentation for Test Action
 plugins:
   - jekyll-remote-theme
 remote_theme: just-the-docs/just-the-docs
+
+# Aux links for the upper right navigation
+aux_links:
+  "Test Action on GitHub":
+    - "https://github.com/jmccartin/test-action"
+
+# Back to top link
+back_to_top: true
+back_to_top_text: "Back to top"
+
+callouts_level: quiet # or loud
+callouts:
+  highlight:
+    color: yellow
+  important:
+    title: Important
+    color: blue
+  new:
+    title: New
+    color: green
+  note:
+    title: Note
+    color: purple
+  warning:
+    title: Warning
+    color: red
